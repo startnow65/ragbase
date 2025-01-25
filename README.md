@@ -72,6 +72,7 @@ Combines the LLM with the retriever to answer a given user question
 | `REMOTE_LLM` | Model to use when using remote LLM fromm Grok | `"llama-3.1-70b-versatile"` |
 | `LLM_TEMPERATURE` | Model temperature parameter | `"0.0"` |
 | `LLM_MAX_TOKENS` | Max number of tokens for model | `"8000"` |
+| `OLLAMA_BASE_URL` | The base URL of Ollama. For example `http://localhost:11434`. When not set, then remote LLM is used via Grok. In this case, `GROK_API_KEY` must also be set | `` |
 | `DEBUG` | Enable debug logging | `"true"` |
 | `CONVERSATION_MESSAGES_LIMIT` | Max number of conversations with the uploaded files. Set to a negative number to not limits the number of conversations | `"-1"` |
 | `GROQ_API_KEY` | The API Key to use for Grok | `""` |

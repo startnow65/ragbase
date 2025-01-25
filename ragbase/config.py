@@ -19,7 +19,7 @@ class Config:
         REMOTE_LLM = os.getenv("REMOTE_LLM", "llama-3.1-70b-versatile")
         TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.0"))
         MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "8000"))
-        USE_LOCAL = False
+        OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
     class Retriever:
         USE_RERANKER = True

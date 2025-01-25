@@ -8,12 +8,13 @@ from ragbase.config import Config
 
 
 def create_llm() -> BaseLanguageModel:
-    if Config.Model.USE_LOCAL:
+    if Config.Model.OLLAMA_BASE_URL:
         return ChatOllama(
             model=Config.Model.LOCAL_LLM,
             temperature=Config.Model.TEMPERATURE,
             keep_alive="1h",
             max_tokens=Config.Model.MAX_TOKENS,
+            base_url=Config.Model.OLLAMA_BASE_URL
         )
     else:
         return ChatGroq(
