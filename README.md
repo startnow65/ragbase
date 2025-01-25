@@ -61,6 +61,21 @@ Given a query, searches for similar documents, reranks the result and applies LL
 
 Combines the LLM with the retriever to answer a given user question
 
+## Environment variables
+| Name | Description | Default value |
+| ---- |------------ | --------------|
+| `STREAMLIT_SERVER_MAX_UPLOAD_SIZE` | Maximum size of each file to upload for analysis in MB | `"10"` |
+| `APP_HOME` | Used as base for app related files | `"/app"` |
+| `LLM_EMBEDDINGS` | Model to use for Embeddings | `"BAAI/bge-base-en-v1.5"` |
+| `LLM_RERANKER` | Model to use for reranking | `"ms-marco-MiniLM-L-12-v2"` |
+| `LOCAL_LLM` | Model to use when using local LLM via Ollama | `"gemma2:9b"` |
+| `REMOTE_LLM` | Model to use when using remote LLM fromm Grok | `"llama-3.1-70b-versatile"` |
+| `LLM_TEMPERATURE` | Model temperature parameter | `"0.0"` |
+| `LLM_MAX_TOKENS` | Max number of tokens for model | `"8000"` |
+| `DEBUG` | Enable debug logging | `"true"` |
+| `CONVERSATION_MESSAGES_LIMIT` | Max number of conversations with the uploaded files. Set to a negative number to not limits the number of conversations | `"-1"` |
+| `GROQ_API_KEY` | The API Key to use for Grok | `""` |
+
 ## Tech Stack
 
 - [Ollama](https://ollama.com/) - run local LLM
@@ -71,11 +86,3 @@ Combines the LLM with the retriever to answer a given user question
 - [FastEmbed](https://qdrant.github.io/fastembed/) - lightweight and fast embedding generation
 - [Streamlit](https://streamlit.io/) - build UI for data apps
 - [PDFium](https://pdfium.googlesource.com/pdfium/) - PDF processing and text extraction
-
-## Add Groq API Key (Optional)
-
-You can also use the Groq API to replace the local LLM, for that you'll need a `.env` file with Groq API key:
-
-```sh
-GROQ_API_KEY=YOUR API KEY
-```
