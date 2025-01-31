@@ -16,6 +16,7 @@ class Config:
         EMBEDDINGS = os.getenv("LLM_EMBEDDINGS", "BAAI/bge-base-en-v1.5")
         RERANKER = os.getenv("LLM_RERANKER", "ms-marco-MiniLM-L-12-v2")
         LOCAL_LLM = os.getenv("LOCAL_LLM", "gemma2:9b")
+        PULL_LOCAL_LLM = os.getenv("PULL_LOCAL_LLM", "true") == 'true'
         REMOTE_LLM = os.getenv("REMOTE_LLM", "llama-3.1-70b-versatile")
         TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.0"))
         MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "8000"))

@@ -69,6 +69,7 @@ Combines the LLM with the retriever to answer a given user question
 | `LLM_EMBEDDINGS` | Model to use for Embeddings | `"BAAI/bge-base-en-v1.5"` |
 | `LLM_RERANKER` | Model to use for reranking | `"ms-marco-MiniLM-L-12-v2"` |
 | `LOCAL_LLM` | Model to use when using local LLM via Ollama | `"gemma2:9b"` |
+| `PULL_LOCAL_LLM` | Indicates if a request should be made to Ollama to pull the model to use | `"true"` |
 | `REMOTE_LLM` | Model to use when using remote LLM fromm Grok | `"llama-3.1-70b-versatile"` |
 | `LLM_TEMPERATURE` | Model temperature parameter | `"0.0"` |
 | `LLM_MAX_TOKENS` | Max number of tokens for model | `"8000"` |

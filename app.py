@@ -1,5 +1,6 @@
 import asyncio
 import random
+import requests
 
 import streamlit as st
 
@@ -95,6 +96,26 @@ def show_chat_input(chain):
         asyncio.run(ask_chain(prompt, chain))
 
 
+@st.cache_resource(show_spinner="Pulling local model...")
+def pull_local_model():
+    try:
+        print("Pulling local model: ", Config.Model.LOCAL_LLM)
+        payload = {"model": Config.Model.LOCAL_LLM}
+        response = requests.post(f"{Config.Model.OLLAMA_BASE_URL}/api/pull", json=payload)
+
+        if response.status_code == 200:
+            print("Done pulling local model")
+            return True
+        else:
+            print("Request to pull local model failed. Response Code: ", response.status_code, " Error: ", response.text)
+            st.error("An error was encountered while pulling the local model", icon="🚨")
+            return False
+    except requests.exceptions.RequestException as err:
+        print("Request to pull local model failed. Error: ", err)
+        st.error("An error was encountered while pulling the local model", icon="🚨")
+        return False
+
+
 st.set_page_config(page_title="RagBase", page_icon="🐧")
 
 st.html(
@@ -107,6 +128,10 @@ st.html(
 </style>
 """
 )
+
+if Config.Model.OLLAMA_BASE_URL and Config.Model.PULL_LOCAL_LLM:
+    if not pull_local_model():
+        st.stop()
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
